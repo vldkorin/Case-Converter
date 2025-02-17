@@ -3,17 +3,17 @@ hyperskill_project:
   ide_files: https://cogniterra.org/media/attachments/lesson/25639/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Mon, 17 Feb 2025 12:06:03 UTC"
+update_date: "Mon, 17 Feb 2025 17:41:41 UTC"
 stages:
   - id: 962
     step: 13999
     is_completed: true
   - id: 963
     step: 14000
-    is_completed: false
+    is_completed: true
   - id: 964
     step: 14001
-    is_completed: false
+    is_completed: true
 topics:
   0:
     - title: World Wide Web

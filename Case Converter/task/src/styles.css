@@ -1,20 +1,31 @@
 .title {
     font-family: Arial, sans-serif;
     font-size: 40px;
+    position: relative;
+    left: 300px;
 
 }
 textarea {
-    width: 600px;
+    width: 900px;
     height: 200px;
+    position: relative;
+    left: 40px;
 }
 
+textarea.flag-america {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg');
+    background-size: cover;
+    background-position: center;
+
+}
 button {
     background-color: coral;
     position: relative;
-    top: 20px;
-    right: 560px;
+    top: 50px;
+    right: 800px;
     width: 120px;
-    height: 20px
+    height: 40px;
+    border-style: dashed;
 }
 button:hover {background-color:chocolate}
 

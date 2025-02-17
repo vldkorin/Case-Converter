@@ -1,5 +1,8 @@
+const fs = require("fs");
 const path = require('path');
-const pagePath = 'file://' + path.resolve(__dirname, '../src/index.html');
+const rimraf = require("rimraf");
+const workingDir = path.resolve(__dirname, '../src');
+const pagePath = 'file://' + path.resolve(__dirname, workingDir + '/index.html');
 
 const {StageTest, correct, wrong} = require('hs-test-web');
 
@@ -8,7 +11,6 @@ class ConverterTest extends StageTest {
     page = this.getPage(pagePath)
 
     tests = [
-
         this.page.execute(() => {
             const nodes = document.getElementsByClassName("title");
 
@@ -44,6 +46,7 @@ class ConverterTest extends StageTest {
             this.lowerCaseButton = document.querySelector("button#lower-case")
             this.properCaseButton = document.querySelector("button#proper-case")
             this.sentenceCaseButton = document.querySelector("button#sentence-case")
+            this.saveTextFileButton = document.querySelector("button#save-text-file")
 
             if (this.upperCaseButton === null) {
                 return wrong("Can't find a button with '#upper-case' id!")
@@ -61,10 +64,12 @@ class ConverterTest extends StageTest {
                 return wrong("Can't find a button with '#sentence-case' id!")
             }
 
+            if (this.saveTextFileButton === null) {
+                return wrong("Can't find a button with '#save-text-file' id!")
+            }
+
             return correct()
         }),
-
-
         this.page.execute(async () => {
 
             this.textArea.value = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' +
@@ -113,6 +118,45 @@ class ConverterTest extends StageTest {
             }
 
             return correct()
+        }),
+        this.node.execute(async() => {
+            const client = await this.page.pageInstance.target().createCDPSession()
+            await client.send(
+                'Page.setDownloadBehavior', {
+                    behavior: 'allow',
+                    downloadPath: workingDir + path.sep + "downloads"
+                }
+            );
+            return correct()
+        }),
+        this.page.execute(async () => {
+            await this.saveTextFileButton.click()
+
+            const delay = ms => new Promise(res => setTimeout(res, ms));
+            await delay(2000);
+
+            return correct()
+        }),
+        this.node.execute(() => {
+            const correctTextFileContent = 'Lorem ipsum is simply dummy text of the printing and typesetting industry.' +
+                ' Lorem ipsum has been the industry\'s standard dummy text ever since the 1500s,' +
+                ' when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+
+            const filePath = workingDir + `${path.sep}downloads${path.sep}text.txt`;
+
+            if (!fs.existsSync(filePath)) {
+                return wrong("Looks like you didn't download a text file named 'text.txt', after clicking on 'Save Text File' button")
+            }
+
+            let fileContent = fs.readFileSync(filePath, "utf8");
+
+            if (fileContent !== correctTextFileContent) {
+                return wrong("Content of downloaded file is wrong!")
+            }
+
+            rimraf.sync(workingDir + '/downloads');
+
+            return correct()
         })
     ]
 }
@@ -124,3 +168,4 @@ it('Test stage', async function () {
     }
     await new ConverterTest().runTests()
 }, 30000)
+
