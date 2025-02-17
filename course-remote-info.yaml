@@ -1,0 +1,82 @@
+hyperskill_project:
+  id: 193
+  ide_files: https://cogniterra.org/media/attachments/lesson/25639/additional_files.json
+  is_template_based: false
+  use_ide: true
+update_date: "Mon, 17 Feb 2025 12:06:03 UTC"
+stages:
+  - id: 962
+    step: 13999
+    is_completed: true
+  - id: 963
+    step: 14000
+    is_completed: false
+  - id: 964
+    step: 14001
+    is_completed: false
+topics:
+  0:
+    - title: World Wide Web
+      theory_id: 6633
+    - title: Block-level elements
+      theory_id: 7271
+    - title: Inline elements
+      theory_id: 7518
+    - title: DOM
+      theory_id: 8635
+    - title: What is CSS
+      theory_id: 7678
+    - title: HTML attributes id and class
+      theory_id: 7527
+    - title: Connecting CSS to HTML
+      theory_id: 7418
+    - title: Web development
+      theory_id: 13931
+    - title: HTML Basics
+      theory_id: 47192
+    - title: Tags and Attributes
+      theory_id: 7536
+    - title: HTML page structure
+      theory_id: 6491
+    - title: Comments in HTML
+      theory_id: 7502
+  1:
+    - title: Comments
+      theory_id: 8170
+    - title: Basic syntax
+      theory_id: 7722
+    - title: CSS Selectors
+      theory_id: 7738
+    - title: Connecting JavaScript to HTML
+      theory_id: 7510
+    - title: Introduction to JavaScript
+      theory_id: 8016
+    - title: Writing first program
+      theory_id: 8154
+    - title: Multi-line programs
+      theory_id: 8162
+    - title: Declaring variables
+      theory_id: 8186
+    - title: Strings and numbers
+      theory_id: 8194
+    - title: Arithmetic operators
+      theory_id: 8372
+    - title: Functions
+      theory_id: 8388
+    - title: Introduction to Objects
+      theory_id: 8588
+    - title: Intro to DOM events
+      theory_id: 10857
+    - title: DOM methods
+      theory_id: 8662
+    - title: The "addEventListener" method
+      theory_id: 8723
+    - title: Introduction to String
+      theory_id: 17747
+    - title: String transforming
+      theory_id: 17779
+    - title: String searching
+      theory_id: 17771
+  2:
+    - title: Starting with git
+      theory_id: 10894

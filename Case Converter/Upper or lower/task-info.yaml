@@ -1,0 +1,18 @@
+type: edu
+custom_name: Upper or lower?
+files:
+  - name: src/index.html
+    visible: true
+    learner_created: false
+  - name: test/test.js
+    visible: false
+    learner_created: false
+  - name: src/styles.css
+    visible: true
+    learner_created: true
+  - name: src/index.js
+    visible: true
+    learner_created: true
+feedback_link: https://hyperskill.org/learn/step/14000#comment
+status: Unchecked
+record: -1
